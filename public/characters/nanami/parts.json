@@ -1,0 +1,33 @@
+{
+  "canvas": { "width": 361, "height": 456 },
+  "base": "base/face.png",
+  "parts": {
+    "brow": {
+      "normal": { "src": "parts/brow/normal.png", "x": 97, "y": 116 },
+      "smile":  { "src": "parts/brow/smile.png",  "x": 97, "y": 107 },
+      "angry":  { "src": "parts/brow/angry.png",  "x": 98, "y": 113 }
+    },
+    "eye": {
+      "normal": { "src": "parts/eye/normal.png", "x": 96, "y": 136 },
+      "smile":  { "src": "parts/eye/smile.png",  "x": 97, "y": 144 },
+      "closed": { "src": "parts/eye/closed.png", "x": 104, "y": 146 }
+    },
+    "mouth": {
+      "normal":          { "src": "parts/mouth/normal.png",          "x": 106, "y": 209 },
+      "smile":           { "src": "parts/mouth/smile.png",           "x": 118, "y": 213 },
+      "smallOpen":       { "src": "parts/mouth/smallOpen.png",       "x": 118, "y": 208 },
+      "dissatisfaction": { "src": "parts/mouth/dissatisfaction.png", "x": 121, "y": 209 }
+    },
+    "other": {
+      "sweat": { "src": "parts/other/sweat.png", "x": 108, "y": 175 },
+      "brush": { "src": "parts/other/brush.png", "x": 88, "y": 115 }
+    }
+  },
+  "presets": {
+    "neutral":   { "eye": "normal", "mouth": "normal",          "brow": "normal" },
+    "smile":     { "eye": "smile",  "mouth": "smile",           "brow": "smile" },
+    "angry":     { "eye": "normal", "mouth": "dissatisfaction", "brow": "angry" },
+    "troubled":  { "eye": "normal", "mouth": "dissatisfaction", "brow": "normal", "other": ["sweat"] },
+    "surprised": { "eye": "normal", "mouth": "smallOpen",       "brow": "normal" }
+  }
+}

@@ -1,0 +1,257 @@
+:root {
+  --accent: #c8a85a;
+  --danger: #b0413a;
+  --paper: #d8d4c8;
+  --ink: #16140f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ── ノベルパート ── */
+
+/* タイピングカーソル点滅 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* 続行インジケーター（▼）のバウンド */
+.next-indicator {
+  display: inline-block;
+  animation: nextBounce 1.2s ease-in-out infinite;
+}
+@keyframes nextBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* テキストウィンドウのフェードイン */
+.text-window {
+  animation: textWindowIn 0.4s ease both;
+}
+@keyframes textWindowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 立ち絵（CharacterSprite）── */
+
+/* 登場: 下からスライドアップ + フェードイン */
+@keyframes spriteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* アイドル: ゆっくり浮遊 */
+@keyframes spriteIdleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* 発話中: 少し活発に揺れる */
+@keyframes spriteSpeakBob {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  30%       { transform: translateY(-5px) scale(1.009); }
+  60%       { transform: translateY(-2px) scale(1.004); }
+}
+
+.sprite-enter {
+  animation: spriteEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sprite-loop-idle {
+  animation: spriteIdleFloat 4s ease-in-out infinite;
+}
+
+.sprite-loop-speak {
+  animation: spriteSpeakBob 2s ease-in-out infinite;
+}
+
+/* 選択肢のスライドイン */
+.choice-enter {
+  animation: choiceSlideIn 0.3s ease both;
+}
+@keyframes choiceSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── タイトル画面（シネマティック 2.35:1）── */
+
+.title-screen {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  font-family: "Shippori Mincho", "Yu Mincho", serif;
+  overflow: hidden;
+}
+
+/* 映画の画角メインスクリーン */
+.title-viewport {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 42.5vw;
+  transform: translateY(-50%);
+  background: #030305;
+  overflow: hidden;
+}
+.title-viewport.ready {
+  cursor: pointer;
+}
+
+/* ロゴのフェードイン（シュリンク用 scale はラッパー側で行う） */
+.title-logo-img {
+  height: 80%;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  display: block;
+  animation: titleLogoFadeIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+@keyframes titleLogoFadeIn {
+  from { opacity: 0; filter: blur(4px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+.title-catchphrase {
+  color: #8c929e;
+  font-size: clamp(13px, 1.6vw, 20px);
+  line-height: 2;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.8vw;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.title-prompt {
+  color: #444a54;
+  font-size: clamp(16px, 2.2vw, 28px);
+  letter-spacing: 0.28em;
+  font-family: sans-serif;
+  animation: titlePromptPulse 2.5s infinite ease-in-out;
+}
+@keyframes titlePromptPulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.8; }
+}
+
+/* NOW LOADING — 横断歩道ストライプのプログレス */
+.title-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vw;
+  animation: fadeIn 0.6s ease both;
+}
+.title-loading-label {
+  color: #444a54;
+  font-size: clamp(11px, 1.2vw, 15px);
+  letter-spacing: 0.4em;
+  font-family: sans-serif;
+  animation: titlePromptPulse 2.5s infinite ease-in-out;
+}
+.title-stripes {
+  display: flex;
+  gap: 0.55vw;
+  align-items: center;
+}
+.title-stripe {
+  width: 0.42vw;
+  min-width: 4px;
+  height: 1.7vw;
+  min-height: 16px;
+  background: #1d222a;
+  border-radius: 1px;
+  transform: skewX(-14deg);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+.title-stripe.lit {
+  background: #8c929e;
+  box-shadow: 0 0 10px rgba(140, 146, 158, 0.4);
+}
+.title-loading-percent {
+  color: #3a414a;
+  font-size: clamp(10px, 1vw, 13px);
+  letter-spacing: 0.3em;
+  font-family: sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* つづきから（セーブあり時のみ） */
+.title-continue {
+  background: transparent;
+  border: none;
+  padding: 0.4em 0;
+  color: #5a6270;
+  font-size: clamp(12px, 1.3vw, 16px);
+  letter-spacing: 0.35em;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+.title-continue:hover {
+  color: #9aa2ae;
+}
+
+/* 言語切替（レターボックス右下） */
+.title-lang-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  color: #33383f;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+.title-lang-btn.active,
+.title-lang-btn:hover {
+  color: #8c929e;
+}

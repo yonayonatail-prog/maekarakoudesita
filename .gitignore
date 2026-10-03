@@ -1,0 +1,67 @@
+# Dependencies and generated output
+node_modules/
+dist/
+*.tsbuildinfo
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.claude/
+.vscode/
+.agents/
+*.log
+
+# Blender automatic backups (the editable .blend files are included)
+*.blend[0-9]
+
+# Local authoring files, references, and temporary inspection output
+/image/
+/readOnly/
+/skill_build/
+/skill_update_staging/
+/krita-scenario-vertical-dialogue/
+/.clinerules/
+/tools/
+/*.blend
+/*.png
+/*.svg
+/*.py
+/*.ps1
+/blender_live_audit.json
+/pharmacy_dental_lp_result.json
+*~
+
+# Assets not referenced by the app or its editor (2026-10-03)
+# Remove the corresponding rule when connecting an asset to the project.
+/public/15714565.webp
+/public/assets/
+/public/bath_hygiene.glb
+/public/bath_with_sink.glb
+/public/bedroom_furniture_set_-_game_ready.glb
+/public/buildings.glb
+/public/city_pack_8.glb
+/public/furniture_from_the_90s.glb
+/public/interior_4_living_room__kitchen.glb
+/public/kitchen_tools.glb
+/public/leather_office_chair_-_low_polygon__game_ready.glb
+/public/objects_interiorvillage_alpha.glb
+/public/psx_japanese_warehouse.glb
+/public/rosle_stainless_steel_balloon_egg_whisk.glb
+/public/shower_bathroom_props.glb
+/public/toilet.glb
+/public/toilet_paper_dispenser.glb
+/public/ultimate_low-poly_car_pack.glb
+/public/data/models/instanced/street_lamp_v1.glb
+/public/data/models/instanced/utility_pole_v1.glb
+/public/data/models/merged/ikebukuro_street_v1.glb
+/public/data/models/merged/ikebukuro_street_v2.glb
+/public/data/models/merged/yamadabill_tile256_v2.glb
+/public/data/models/merged/yamadabill_tile256_v3.glb
+/public/data/models/merged/yamadabill_tile256_v4.glb
+/public/data/textures/mansyon2_tile_256.png
+/public/data/textures/mansyon2_tile_256_v2.png

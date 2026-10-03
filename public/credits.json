@@ -1,0 +1,13 @@
+{
+  "title": "前からこうでした",
+  "subtitle": "MAEKARA KOUDE SHITA",
+  "year": "2025",
+  "staff": [
+    { "role": "企画 / シナリオ / プログラム / アート", "name": "YOUR NAME" }
+  ],
+  "author": {
+    "message": "素晴らしい素材を提供してくださったすべての制作者の方々へ\n心より感謝申し上げます。",
+    "x": "@YourXHandle"
+  },
+  "assets": []
+}
